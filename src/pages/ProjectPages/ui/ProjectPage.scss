@@ -1,0 +1,39 @@
+.mainPage {
+    margin-top: 50px;
+    padding: 0 200px;
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
+    text-align: center;
+    &-link {
+        display: flex;
+        align-items: center;
+        color: greenyellow;
+        background-color: red;
+        border-radius: 12px;
+        width: 150px;
+        height: 150px;
+        text-decoration: none;
+        span {
+            margin: 0 auto;
+        }
+    &:hover {
+            color: red;
+            background-color:greenyellow;
+            transition: all .8s;
+            transform: rotate(-45deg);
+            border: 1px solid blue;
+            span {
+                transform: rotate(45deg);
+                font-size: 20px;
+                font-weight: 500;
+                transition: all 1s;
+            }
+        } 
+    }
+    &-title {
+        font-size: 26px;
+        text-align: center;
+        margin: 100px 0;
+    }
+}

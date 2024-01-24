@@ -1,0 +1,135 @@
+{
+    "construction": {
+            "1" : {
+                "number": "1",
+                "title": "1",
+                "description": "1",
+                "priority": ["base", "secondery"],
+                "attached_files": "1",
+                "current_state": {
+                    "Queue": true,
+                    "Development": false,
+                    "Done": false
+                    },
+                "created_at": "1",
+                "total_operating_time": "1",
+                "expiration_time": "1"
+            },
+            "2" :  {
+                "number": "2",
+                "title": "2",
+                "description": "2",
+                "priority": ["base", "secondery"],
+                "attached_files": "2",
+                "current_state": {
+                    "Queue": true,
+                    "Development": false,
+                    "Done": false
+                    },
+                "created_at": "1",
+                "total_operating_time": "1",
+                "expiration_time": "1"
+            },
+            "3" : {
+                "title": "1",
+                "description": "1",
+                "created_at": "1",
+                "dateinwork": "1",
+                "dateclose": "1",
+                "prioretet": "1",
+                "files": "1",
+                "current_status": "1"
+
+        }
+    },
+    "dev_estimates": {
+            "1" : {
+                "number": "1",
+                "title": "1",
+                "description": "1",
+                "priority": ["base", "secondery"],
+                "attached_files": "1",
+                "current_state": {
+                    "Queue": true,
+                    "Development": false,
+                    "Done": false
+                    },
+                "created_at": "1",
+                "total_operating_time": "1",
+                "expiration_time": "1"
+            },
+            "2" :  {
+                "number": "2",
+                "title": "2",
+                "description": "2",
+                "priority": ["base", "secondery"],
+                "attached_files": "2",
+                "current_state": {
+                    "Queue": true,
+                    "Development": false,
+                    "Done": false
+                    },
+                "created_at": "1",
+                "total_operating_time": "1",
+                "expiration_time": "1"
+            },
+            "3" : {
+                "title": "1",
+                "description": "1",
+                "created_at": "1",
+                "dateinwork": "1",
+                "dateclose": "1",
+                "prioretet": "1",
+                "files": "1",
+                "current_status": "1"
+            }
+
+    },
+    "planing": {
+            "1" : {
+                "number": "1",
+                "title": "1",
+                "description": "1",
+                "priority": ["base", "secondery"],
+                "attached_files": "1",
+                "current_state": {
+                    "Queue": true,
+                    "Development": false,
+                    "Done": false
+                    },
+                "created_at": "1",
+                "total_operating_time": "1",
+                "expiration_time": "1"
+            },
+            "2" :  {
+                "number": "2",
+                "title": "2",
+                "description": "2",
+                "priority": ["base", "secondery"],
+                "attached_files": "2",
+                "current_state": {
+                    "Queue": true,
+                    "Development": false,
+                    "Done": false
+                    },
+                "created_at": "1",
+                "total_operating_time": "1",
+                "expiration_time": "1"
+            },
+            "3" : {
+                "title": "1",
+                "description": "1",
+                "created_at": "1",
+                "dateinwork": "1",
+                "dateclose": "1",
+                "prioretet": "1",
+                "files": "1",
+                "current_status": "1"
+            }
+
+    }
+    
+}
+
+
+
