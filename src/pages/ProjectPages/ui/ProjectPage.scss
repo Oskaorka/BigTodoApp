@@ -36,4 +36,50 @@
         text-align: center;
         margin: 100px 0;
     }
+    &-wrapper__logIn {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 20px;
+        padding-right: 20px;
+        // width: 200px;
+    }
 }
+.Modal__wrapper {
+    .content {
+        width: 450px;
+        height: 300px;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        
+    }
+    &-form {
+        display: inherit;
+        flex-direction: column;
+        // display: flex;
+        // justify-content: center;
+        align-items:center;
+        label {
+            padding: 10px;
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+        }
+        input {
+            width: 350px;
+            padding: 6px;
+            border-radius: 4px;
+            color: tomato;
+            font-size: 18px;
+        }
+        .btn-form {
+            margin-top: 25px;
+            width: 200px;
+        }
+    }
+}
+// .Modal {
+
+//     .content {
+//         width: 40px;
+//     }
+// }

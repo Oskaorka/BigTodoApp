@@ -78,7 +78,9 @@ const ListItem = ({ item, index, deleteTask }: any) => {
                             { currentTarget === item.id && isOpenModal &&
                             <Modal
                                 isOpen={isOpenModal}
-                                onClose={onToggleModal}>
+                                onClose={onToggleModal}
+                                className='Modal'
+                            >
                                 <Button 
                                     // onClick={onClick}
                                     onClick={()=> deleteTask(currentTarget)}

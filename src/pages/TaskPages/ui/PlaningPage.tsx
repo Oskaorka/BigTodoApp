@@ -75,7 +75,9 @@ const PlaningPage = () => {
                 { isOpenModal &&
                     <Modal
                         isOpen={isOpenModal}
-                        onClose={onToggleModal}>
+                        onClose={onToggleModal}
+                        className='Modal'
+                    >
                         <Button
                             onClick={onToggleModal}
                             children='X'

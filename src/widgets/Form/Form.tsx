@@ -153,7 +153,7 @@ const Form = ({addDispatchForm, currentId, onClose, props, dataId}: any)  => {
 
                 />
             
-                <Button children='update task' className='btn'/>
+                <Button children='update' className='btn'/>
             </form>
             {/* <span>text message</span> */}
             <Comments currentId={currentId}/>
