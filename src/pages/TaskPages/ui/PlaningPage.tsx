@@ -2,7 +2,7 @@ import { loadPlaningColumnStart, loadPlaningStart } from 'app/redux/action/actio
 import { useAppDispatch } from 'app/redux/store';
 import { ConstructionPage } from 'pages/ConstructionPage';
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from 'shared/ui/Button/Button';
 import FormCreateTask from 'widgets/Form/FormCreateTask';
 import { Modal } from 'widgets/Modal/ModalTask';
@@ -56,9 +56,12 @@ const PlaningPage = () => {
         dispatch(loadPlaningStart())
         dispatch(loadPlaningColumnStart())
     }, [dispatch]);
-
+    const params = useParams();
+    console.log(params);
+    
     return (
         <>
+            lololo
             <div 
                 key={'e.number'} 
                 className='task-wrapper' 

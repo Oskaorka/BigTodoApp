@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import { IComments, ITodos } from 'app/redux/reducers/data';
 import axios from 'axios';
+import localStorageService from './localStorage.service';
+// import { FormSignUp } from 'widgets/Form/FormRegistration';
 // import { getService } from './getService';
 
 // const { content } = await getService.get('construction');
@@ -9,7 +11,7 @@ export async function loadList() {
     const data = await axios.get(
         'https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/planing.json')
         .then(res => res);
-    console.log(data);
+    // console.log(data);
         
     return data
 }
@@ -130,3 +132,32 @@ export async function deleteComment(commentBlock: string, commentId: string) {
 //         console.log(error);
 //     }
 // }
+
+
+
+
+// export async function createUser(payload:FormSignUp) {
+export async function createUsers(payload:any) {
+    // emptyComment: IComments,
+    // commentId:string,
+    // currentIdComment:string
+    
+    const data = await axios.put(
+        // eslint-disable-next-line max-len
+        // `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${payload._id}/${payload}.json`);
+        `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${payload._id}.json`, payload);
+    return data
+}
+export async function logInUsers() {
+// export async function logInUsers(payloadId:string) {
+    // emptyComment: IComments,
+    // commentId:string,
+    // currentIdComment:string
+    // console.log(payloadId);
+    
+    const data = await axios.get(
+        // eslint-disable-next-line max-len
+        // `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${payload._id}/${payload}.json`);
+        `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorageService.getUserId}.json`);
+    return data
+}

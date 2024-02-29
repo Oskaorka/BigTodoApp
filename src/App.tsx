@@ -1,8 +1,12 @@
+// import { AuthProvider } from 'app/provider/router/service/useAuth';
+import AuthProvider from 'app/provider/router/service/useAuth';
 import AppRouter from 'app/provider/router/ui/AppRouter';
 
 function App() {
     return (
-        <AppRouter/>
+        <AuthProvider>
+            <AppRouter/>
+        </AuthProvider>
     );
 }
 

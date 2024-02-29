@@ -3,7 +3,7 @@ import axios from 'axios';
 import configFile from 'config.json';
 // import authService from './auth.service';
 
-// import localStorageService from './localStorage.service';
+import localStorageService from './localStorage.service';
 
 const http = axios.create({
     baseURL: configFile.apiEndpoint
@@ -15,8 +15,8 @@ http.interceptors.request.use(
             const containSlash = /\/$/gi.test(config.url);
             config.url =
                 (containSlash ? config.url.slice(0, -1) : config.url) + '.json';
-            // const expiresDate = localStorageService.getTokenExpiresDate();
-            // const refreshToken = localStorageService.getRefreshToken();
+            const expiresDate = localStorageService.getTokenExpiresDate();
+            const refreshToken = localStorageService.getRefreshToken();
             // if (refreshToken && expiresDate < Date.now()) {
             //     const data = await authService.refresh();
 
@@ -27,10 +27,10 @@ http.interceptors.request.use(
             //         localId: data.user_id
             //     });
             // }
-            // const accessToken = localStorageService.getAccessToken();
-            // if (accessToken) {
-            //     config.params = { ...config.params, auth: accessToken };
-            // }
+            const accessToken = localStorageService.getAccessToken();
+            if (accessToken) {
+                config.params = { ...config.params, auth: accessToken };
+            }
         }
         return config;
     },
