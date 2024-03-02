@@ -26,9 +26,11 @@ export interface IDefaultValue {
 const httpAuth = axios.create({
     baseURL: 'https://identitytoolkit.googleapis.com/v1/',
     params: {
-        key:'AIzaSyBo7_E3-xSwK9ATdoiXE4o9sfn3HSw7iUU'
+        key: process.env.REACT_APP_FIREBASE_KEY
+        // key: 'AIzaSyBo7_E3-xSwK9ATdoiXE4o9sfn3HSw7iUU'
     }
 })
+// console.log(process.env);
 
 
 // for the value children, correct the typefrom any 
@@ -94,7 +96,8 @@ const AuthProvider = ({children}:any) => {
             setTokens(data);
             getUserData()
             // await logInUsers({_id: data.localId, email})
-            console.log(data);
+            // console.log(data);
+            // console.log(getUserData());
         } catch (error) {
             console.log(error);
             
@@ -164,10 +167,10 @@ const AuthProvider = ({children}:any) => {
 
     async function getUserData() {
         try {
-            const content = await logInUsers()
-            console.log(content);
+            const {data} = await logInUsers();
+            console.log(data);
             
-            setCurrentUser(content)
+            setCurrentUser(data);
             
         } catch (error) {
             console.log(error);

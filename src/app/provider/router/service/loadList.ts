@@ -155,9 +155,13 @@ export async function logInUsers() {
     // currentIdComment:string
     // console.log(payloadId);
     
+    // console.log(localStorageService.getUserId());
     const data = await axios.get(
         // eslint-disable-next-line max-len
         // `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${payload._id}/${payload}.json`);
-        `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorageService.getUserId}.json`);
+        `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorageService.getUserId()}.json`);
+        
+    // console.log(data);
+    
     return data
 }
