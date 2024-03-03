@@ -4,6 +4,7 @@ import configFile from 'config.json';
 // import authService from './auth.service';
 
 import localStorageService from './localStorage.service';
+import { httpAuth } from './useAuth';
 
 const http = axios.create({
     baseURL: configFile.apiEndpoint
@@ -17,16 +18,25 @@ http.interceptors.request.use(
                 (containSlash ? config.url.slice(0, -1) : config.url) + '.json';
             const expiresDate = localStorageService.getTokenExpiresDate();
             const refreshToken = localStorageService.getRefreshToken();
-            // if (refreshToken && expiresDate < Date.now()) {
-            //     const data = await authService.refresh();
+            // eslint-disable-next-line no-undef
+            console.log(refreshToken);
+            if (refreshToken && expiresDate < Date.now()) {
+                // const data = await authService.refresh();
+                // const {data} = await httpAuth.refresh();
+                const { data } = await httpAuth.post ('token', {
+                    grant_type: 'refresh_token',
+                    refresh_token: refreshToken
+                });
+                // eslint-disable-next-line no-undef
+                // console.log(data);
+                localStorageService.setTokens({
+                    refreshToken: data.refresh_token,
+                    idToken: data.id_token,
+                    expiresIn: data.expires_in,
+                    localId: data.user_id
+                });
 
-            //     localStorageService.setTokens({
-            //         refreshToken: data.refresh_token,
-            //         idToken: data.id_token,
-            //         expiresIn: data.expires_in,
-            //         localId: data.user_id
-            //     });
-            // }
+            }
             const accessToken = localStorageService.getAccessToken();
             if (accessToken) {
                 config.params = { ...config.params, auth: accessToken };
@@ -39,7 +49,7 @@ http.interceptors.request.use(
     }
 );
 function transormData(data) {
-    return data && !data.id
+    return data && !data._id
         ? Object.keys(data).map((key) => ({
             ...data[key]
         }))

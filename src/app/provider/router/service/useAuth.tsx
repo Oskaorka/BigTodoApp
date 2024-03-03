@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 // import { createUsers, logInUsers } from './loadList';
-import { createUsers, logInUsers } from './loadList';
+import { createUsers} from './loadList';
+// import { createUsers, logInUsers } from './loadList';
 import { useNavigate } from 'react-router-dom';
 import localStorageService, { setTokens } from './localStorage.service';
+import { getService } from './getService';
 
 
 export type FormSignUp = {
@@ -23,7 +25,7 @@ export interface IDefaultValue {
 
 // const key = '';
 // const url = ,
-const httpAuth = axios.create({
+export const httpAuth = axios.create({
     baseURL: 'https://identitytoolkit.googleapis.com/v1/',
     params: {
         key: process.env.REACT_APP_FIREBASE_KEY
@@ -111,7 +113,7 @@ const AuthProvider = ({children}:any) => {
     async function createUser (content: unknown) {
         try {
             
-            const {data} = await createUsers(content)
+            const { data } = await createUsers(content)
             // console.log(content);
             // console.log(data);
             setCurrentUser(data);
@@ -167,10 +169,11 @@ const AuthProvider = ({children}:any) => {
 
     async function getUserData() {
         try {
-            const {data} = await logInUsers();
-            console.log(data);
+            const {content} = await getService.logInUsers();
+            // const {data} = await logInUsers();
+            console.log(content);
             
-            setCurrentUser(data);
+            setCurrentUser(content);
             
         } catch (error) {
             console.log(error);

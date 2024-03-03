@@ -1,11 +1,12 @@
 import httpService from './http.sevice';
+import localStorageService from './localStorage.service';
 // not used file
 export const getService = {
     get: async () => {
         const { data } = await httpService.get('planing');
         return data;
     },
-    create: async (payload, endPointPath) => {
+    create: async (payload:any, endPointPath:string) => {
         const  data = await httpService.post(
             endPointPath + payload,
             payload
@@ -29,7 +30,7 @@ export const getService = {
     //     );
     //     return data;
     // }
-    removeTask: async (payloadId, endPoint) => {
+    removeTask: async (payloadId:any, endPoint: string) => {
         const { data } = await httpService.delete(
             endPoint + payloadId,
             // 'planing' + localStorageService.getUserId(),
@@ -51,4 +52,21 @@ export const getService = {
         const { data } = await httpService.get('coments');
         return data;
     },
+    
+    
+    
+    logInUsers: async () => {
+        
+        
+        const  { data }  = await httpService.get(`users/${localStorageService.getUserId()}`);
+        // const data = await axios.get(
+        // eslint-disable-next-line max-len
+        // `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${payload._id}/${payload}.json`);
+        // `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorageService.getUserId()}.json`);
+                
+        
+        // eslint-disable-next-line no-undef
+        console.log(data);
+        return data
+    }
 };
