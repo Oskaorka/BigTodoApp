@@ -1,4 +1,5 @@
 /* eslint-disable no-prototype-builtins */
+import { useAuth } from 'app/provider/router/service/useAuth';
 import { 
     createCommentActionStart,
     createCommentReplyActionStart,
@@ -20,6 +21,9 @@ const CommentForm = ({
 }: any) => {
     const dispatch = useAppDispatch();
     const [text, setText] = useState(initialText);
+    const {currentUser}:any = useAuth();
+    console.log(currentUser.userName);
+    
     // const [currentIdBlock, setCurrentId] = useState(currentId);
     // const [text, setText] = useState(initialText);
     const isTextareaDisabled = text.length === 0;
@@ -27,7 +31,7 @@ const CommentForm = ({
         // id: (~~(Math.random()*1e8)).toString(16),
         id: currentId,
         body: '',
-        username: 'unkown',
+        username: currentUser.userName,
         // parentId: 'null',
         parentId: 'null',
         createdAt: new Date(),
@@ -42,6 +46,8 @@ const CommentForm = ({
         // console.log(reply);
         // console.log(currentId);
         // console.log(currentIdBlock);
+        console.log(currentUser);
+        
         if (reply && currentId) {
             setComment((prevstate:any) => ({
                 ...prevstate,
