@@ -11,7 +11,7 @@ export async function loadList() {
     const data = await axios.get(
         'https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/planing.json')
         .then(res => res);
-    // console.log(data);
+    console.log(data);
         
     return data
 }

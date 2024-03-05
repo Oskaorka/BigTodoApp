@@ -1,4 +1,5 @@
-interface IInputForm {
+export interface IInputForm {
+    // target: any;
     htmlFor: string,
     tileLabel : string,
     id: string,
@@ -6,6 +7,7 @@ interface IInputForm {
     name: string,
     placeholder: string,
     onChange: any,
+    // onChange:() => void,
     value: string
 }
 
@@ -18,7 +20,7 @@ const InputForm = ({
     placeholder,
     onChange,
     value
-}:IInputForm) => {
+}:IInputForm &  React.InputHTMLAttributes<HTMLInputElement>) => {
     return ( 
         <>
             <label htmlFor={htmlFor}>{tileLabel}</label>

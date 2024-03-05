@@ -1,37 +1,7 @@
-// import { DetailedHTMLProps, HTMLAttributes } from 'react';
-
-// export interface IModal {
-//     // active: boolean,
-//     // setActive: ((value: boolean) => void);
-//     // children: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-//     // children: JSX.Element
-// }
-
-// const ModalTask = (): any => {
-//     return ( 
-//         <div className="modal" active={modalActive} setActive={setModalActive}>
-//         </div>
-//     );
-// }
-// {/* <form className='modal-form'>
-//     <input type="text" />
-//     <input type="text" />
-//     <input type="text" />
-//     <input type="text" />
-//     <input type="text" />
-// </form> */}
-
-// export default ModalTask;
-
-
-// import { classNames } from 'shared/lib/classNames/classNames';
 import React, {
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { Portal } from 'shared/ui/Portal';
-// import { Portal } from 'shared/ui/Portal/Portal';
-// import { useTheme } from 'app/provider/ThemeProvider';
-// import cls from './Modal.module.scss';
 
 interface ModalProps {
     className?: string;
@@ -52,8 +22,7 @@ export const Modal = (props: ModalProps) => {
 
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
-    // const { theme } = useTheme();
-
+   
     const closeHandler = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
@@ -93,7 +62,6 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            {/* <div className={'Modal'}> */}
             <div className={className}>
                 <div className='overlay' onClick={closeHandler}>
                     <div

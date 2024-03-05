@@ -3,7 +3,9 @@ import localStorageService from './localStorage.service';
 // not used file
 export const getService = {
     get: async () => {
-        const { data } = await httpService.get('planing');
+        const {data}  = await httpService.get('planing');
+        console.log(data);
+        
         return data;
     },
     create: async (payload:any, endPointPath:string) => {

@@ -3,7 +3,7 @@ import Button from 'shared/ui/Button/Button';
 import { Modal } from 'widgets/Modal/ModalTask';
 import axios from 'axios';
 import { createUsers } from 'app/provider/router/service/loadList';
-import InputForm from './InputForm';
+import InputForm, { IInputForm } from './InputForm';
 import { FormSignUp, useAuth } from 'app/provider/router/service/useAuth';
 // import { STATUS_CODES } from 'http';
 
@@ -79,43 +79,46 @@ const FormRegistration = () => {
     //     }
         
     // }
+type ReactInput = React.InputHTMLAttributes<HTMLInputElement>;
+type InputArgs = IInputForm & Omit<ReactInput, keyof IInputForm >
 
-    const onToggleModal = useCallback(() => {
-        setIsOpenModal((prev) => !prev);
-        setData({
-            email: '',
-            password: '',
-            userName: ''
-        })
-    }, []);
+const onToggleModal = useCallback(() => {
+    setIsOpenModal((prev) => !prev);
+    setData({
+        email: '',
+        password: '',
+        userName: ''
+    })
+}, []);
 
-    const handleChangeForText = ({ target }:any) => {
-        setData((prevstate:any) => ({
-            ...prevstate,
-            [target.name]: target.value
-        }));
+// const handleChangeForText = ({target}:InputArgs)  => {
+const handleChangeForText = ({target}:any)  => {
+    setData((prevstate) => ({
+        ...prevstate,
+        [target.name]: target.value
+    }));
 
-    };
+};
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement & FormSignUp>) => {
-        event.preventDefault();
-        try {
-            onToggleModal();
-            signUp(data);
-            console.log(data);
+const handleSubmit = (event: React.FormEvent<HTMLFormElement & FormSignUp>) => {
+    event.preventDefault();
+    try {
+        onToggleModal();
+        signUp(data);
+        console.log(data);
             
-        } catch (error) {
-            console.log(error);
+    } catch (error) {
+        console.log(error);
             
-        }
-        
     }
+        
+}
 
-    return (
-        <>
-            {/* <Button id='signIn' onClick={onToggleModal}  className="btn btn-logIn" children="signIn"/> */}
-            <Button onClick={onToggleModal}  className="btn btn-logIn" children="signUp"/>
-            {isOpenModal && 
+return (
+    <>
+        {/* <Button id='signIn' onClick={onToggleModal}  className="btn btn-logIn" children="signIn"/> */}
+        <Button onClick={onToggleModal}  className="btn btn-logIn" children="signUp"/>
+        {isOpenModal && 
             <Modal
                 isOpen={isOpenModal}
                 onClose={onToggleModal}
@@ -186,9 +189,9 @@ const FormRegistration = () => {
                     children='X'
                     className='btn btn-close'/>
             </Modal>
-            }
-        </>
-    );
+        }
+    </>
+);
 }
  
 export default FormRegistration;

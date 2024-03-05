@@ -20,7 +20,7 @@ import {
     deleteTaskApi,
     loadComments,
     // loadColumndata,
-    loadList,
+    // loadList,
     updateTaskApi
 } from 'app/provider/router/service/loadList';
 import { 
@@ -41,6 +41,7 @@ import {
     loadCommentsStart,
 } from '../action/actionCreator';
 import { IComments } from '../reducers/data';
+import { getService } from 'app/provider/router/service/getService';
 
 export enum ICurrentStateTodo {
     Queue = 'Queue',
@@ -51,40 +52,51 @@ export enum ICurrentStateTodo {
 // working with data planing
 export function* handlePlaningData(): unknown {
     try {
-        const  res  =  yield call(loadList);
+        // const  res  =  yield call(loadList);
+        // const  res  =  yield call(getService.get);
+        const {content}: any = yield call(getService.get);
+        console.log(content);
+        // const  res  =  yield call(content);
+        // const  res  =  yield call(content);
+        yield put(loadPlaningSuccess(content))
         // console.log(res);
         
-        if(res.status === 200) {
-            // console.log(res.data);
+        // if(res.status === 200) {
+        //     // console.log(res.data);
             
-            yield put(loadPlaningSuccess(res.data))
-        }     
+        //     yield put(loadPlaningSuccess(res.data))
+        // }     
     } catch (error: any) {
-        yield put(loadPlaningError(error.res.data))
+        yield put(loadPlaningError(error))
     }
 }
 
 export function* handlePlaningColumn(): unknown {
     try {
         // const  res  =  yield call(loadColumndata);
-        const  res  =  yield call(loadList);
-        if(res.status === 200) {
-            const listsData: any = Object.values(res.data)
-            const listFilterName = (nameList:string) => listsData.filter((e:any)=>
-                e.current_state === nameList
-            );
-            const initialColumns: object = {
-                Queue: listFilterName(ICurrentStateTodo.Queue),
-                Development: listFilterName(ICurrentStateTodo.Development),
-                Done: listFilterName(ICurrentStateTodo.Done)
-            }
-            // console.log(initialColumns);
+        // const  res  =  yield call(getService.get);
+        // const  res  =  yield call(loadList);
+        const {content}: any = yield call(getService.get);
+        // console.log(res);
+        
+        // if(res.status === 200) {
+        // const listsData: any = Object.values(res.data)
+        const listsData: any = Object.values(content)
+        const listFilterName = (nameList:string) => listsData.filter((e:any)=>
+            e.current_state === nameList
+        );
+        const initialColumns: object = {
+            Queue: listFilterName(ICurrentStateTodo.Queue),
+            Development: listFilterName(ICurrentStateTodo.Development),
+            Done: listFilterName(ICurrentStateTodo.Done)
+        }
+        // console.log(initialColumns);
             
-            return yield put(loadPlaningColumnSuccess(initialColumns))
-            // return yield put(loadPlaningColumnSuccess(listsData))
-        }     
+        return yield put(loadPlaningColumnSuccess(initialColumns))
+        // return yield put(loadPlaningColumnSuccess(listsData))
+        // }     
     } catch (error: any) {
-        yield put(loadPlaningColumnError(error.res.data))
+        yield put(loadPlaningColumnError(error))
     }
 }
 

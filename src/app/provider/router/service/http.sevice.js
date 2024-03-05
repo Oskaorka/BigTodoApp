@@ -49,7 +49,7 @@ http.interceptors.request.use(
     }
 );
 function transormData(data) {
-    return data && !data._id
+    return data && !data._id && data.id
         ? Object.keys(data).map((key) => ({
             ...data[key]
         }))
