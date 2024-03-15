@@ -36,12 +36,13 @@ const initialState = () => {
         );
         setInitState(generateLists());
         console.log(initState);
+        // console.log('initState');
         
         return ( initState );
     }
     useEffect(() =>{
         dispatch(loadPlaningStart())
-    },[dispatch])
+    },[])
     // console.log(generateLists());
     // return null
     

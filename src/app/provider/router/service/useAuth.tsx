@@ -53,8 +53,8 @@ const AuthProvider = ({children}:any) => {
     //     email:'',
     //     password:'',
     //     userName: ''
-    // })
-    console.log(currentUser);
+    // // })
+    // console.log(currentUser);
 
     // async function signUp ({email, password, ...rest}:FormSignUp) {
     async function signUp ({email, password, ...rest}:FormSignUp) {

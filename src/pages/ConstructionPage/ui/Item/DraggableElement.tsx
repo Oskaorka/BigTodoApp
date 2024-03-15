@@ -15,6 +15,8 @@ export const StrictModeDroppable = ({ children, ...props }: DroppableProps) => {
     const [enabled, setEnabled] = useState(false);
     useEffect(() => {
         const animation = requestAnimationFrame(() => setEnabled(true));
+        // console.log(animation);
+        
         return () => {
             cancelAnimationFrame(animation);
             setEnabled(false);
@@ -29,7 +31,7 @@ export const StrictModeDroppable = ({ children, ...props }: DroppableProps) => {
 const isEmpty = (x:any) => !Object.keys(x || {}).length;
 // const DraggableElement = ({ prefix:any, elements }: ComponentType) => {
 const DraggableElement = ({ prefix, elements, deleteTask }: any) => {
-    // console.log(elements);
+    // console.log(prefix);
     return (
         <div className="droppable">
             <h5>{prefix}</h5>

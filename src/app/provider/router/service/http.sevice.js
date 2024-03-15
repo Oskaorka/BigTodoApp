@@ -19,7 +19,7 @@ http.interceptors.request.use(
             const expiresDate = localStorageService.getTokenExpiresDate();
             const refreshToken = localStorageService.getRefreshToken();
             // eslint-disable-next-line no-undef
-            console.log(refreshToken);
+            // console.log(refreshToken);
             if (refreshToken && expiresDate < Date.now()) {
                 // const data = await authService.refresh();
                 // const {data} = await httpAuth.refresh();

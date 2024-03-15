@@ -22,7 +22,7 @@ const ProjectPagese = () => {
     //     console.log(isObjectEmpty(currentUser));
         
     // },[currentUser])
-    console.log(currentUser);
+    // console.log(currentUser);
     const handleloginOut = () => {
         localStorage.clear();
         // console.log('out');

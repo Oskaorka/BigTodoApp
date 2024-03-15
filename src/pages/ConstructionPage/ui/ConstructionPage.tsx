@@ -93,8 +93,13 @@ export const ConstructionPage = () => {
         if(currentId.length !==0) {
             dispatch(updateTaskStart({currentId, newTask} ));
         }
-    },[newTask, currentId, dispatch, elements]);
-
+    },[newTask]);
+    // },[newTask, currentId, dispatch, elements]);
+    // },[newTask, currentId, dispatch, elements]);
+    // },[newTask, currentId, dispatch, elements]);
+    // },[]);
+    // был бесконечный рендер, с такими изменениями он пересатал крутить бесконечно (пока оставляю необходимо посмотреть и проверить на работоспособность)
+    
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -109,7 +114,11 @@ export const ConstructionPage = () => {
         if(!isEmpty(planingColumn)){
             setElements(planingColumn);
         }
-    },[planingColumn])
+    },[planingColumn]);
+    // console.log(planingColumn);
+    
+
+    ///// возможно здесь есть ошибка бесконечного рендера компонента
 
     return (
         !isEmpty(planingColumn)?
