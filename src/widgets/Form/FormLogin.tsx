@@ -4,12 +4,12 @@ import Button from 'shared/ui/Button/Button';
 import { Modal } from 'widgets/Modal/ModalTask';
 // import { FormSignUp, setTokens } from './FormRegistration';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { FormSignUp, useAuth } from 'app/provider/router/service/useAuth';
 
 const FormLogin = () => {
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [data, setData] = useState({
         email:'',
         password:'',
@@ -44,7 +44,7 @@ const FormLogin = () => {
         try {
             await signIn(data);
             onToggleModal();
-            navigate('/planing')
+            // navigate('/planing')
 
             // console.log(data);
             

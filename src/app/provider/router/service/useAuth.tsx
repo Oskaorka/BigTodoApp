@@ -124,6 +124,13 @@ const AuthProvider = ({children}:any) => {
         
     }
 
+    function loginOut() {
+        localStorageService.removeAuthData();
+        setCurrentUser({});
+        // console.log('test');
+        
+    } 
+
     // const onToggleModal = useCallback(() => {
     //     setIsOpenModal((prev) => !prev);
     //     setData({
@@ -171,7 +178,8 @@ const AuthProvider = ({children}:any) => {
         try {
             const {content} = await getService.logInUsers();
             // const {data} = await logInUsers();
-            console.log(content);
+            // console.log(content);
+            // console.log(localStorageService.getAccessToken());
             
             setCurrentUser(content);
             
@@ -189,7 +197,7 @@ const AuthProvider = ({children}:any) => {
 
 
     return(
-        <AuthContext.Provider value={{signUp, signIn, currentUser}}>
+        <AuthContext.Provider value={{signUp, signIn, currentUser, loginOut}}>
             {children}
         </AuthContext.Provider>
     )

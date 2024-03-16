@@ -68,7 +68,7 @@ export const getService = {
                 
         
         // eslint-disable-next-line no-undef
-        console.log(data);
+        // console.log(data);
         return data
     }
 };

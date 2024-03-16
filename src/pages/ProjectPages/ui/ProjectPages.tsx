@@ -7,8 +7,11 @@ import FormLogin from 'widgets/Form/FormLogin';
 import { useAuth } from 'app/provider/router/service/useAuth';
 import Button from 'shared/ui/Button/Button';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import logOut from 'widgets/Form/LoginOut';
 const ProjectPagese = () => {
-    const {currentUser} = useAuth();
+    const {currentUser, loginOut} = useAuth();
+    const navigate = useNavigate();
     // const isObjectEmpty = (objectName:any) => {
     //     for (const prop in objectName) {
     //         // eslint-disable-next-line no-prototype-builtins
@@ -22,46 +25,58 @@ const ProjectPagese = () => {
     //     console.log(isObjectEmpty(currentUser));
         
     // },[currentUser])
-    // console.log(currentUser);
+    const isEmpty = (x:any) => !Object.keys(x || {}).length;
+    // console.log(currentUser.userName);
+    // console.log(isEmpty(currentUser));
+    /// выход пользователя из системы необходимо доработать
     const handleloginOut = () => {
-        localStorage.clear();
-        // console.log('out');
+        // navigate('/');
+        // localStorage.clear();
+        // console.log(currentUser);
+        loginOut();
+        // logOut
         
     }
     
     return (
         <div>
             <div className="mainPage-wrapper__logIn">
-                {/* { !currentUser || isObjectEmpty(currentUser) &&  */}
-                {/* <> */}
-                <FormLogin/>
-                <FormRegistration/>
-                {/* </> */}
-                {/* || <Button onClick={handleloginOut} className="btn btn-logIn" children="LogOut"/>} */}
+                { !currentUser || isEmpty(currentUser)? 
+                    <>
+                        <FormLogin/>
+                        <FormRegistration/>
+                    </>
+                    : <Button onClick={handleloginOut} className="btn btn-logIn" children="LogOut"/>} 
+                {/* // <Button onClick={handleloginOut} className="btn btn-logIn" children="LogOut"/> */}
             </div>
-            <div className="mainPage-title">{currentUser?.userName} select a project</div>
-            <div className={'mainPage'}>
-                <AppLink
-                    className={'mainPage-link'}
-                    to={RoutePath.construction}
-                >
-                    <span className={'cls.link'}>Строительство объектов</span>
+            {!isEmpty(currentUser)?
+                <>
+                    <div className="mainPage-title">Hello {currentUser?.userName}, select a project</div>
+                    <div className={'mainPage'}>
+                        <AppLink
+                            className={'mainPage-link'}
+                            to={RoutePath.construction}
+                        >
+                            <span className={'cls.link'}>Строительство объектов</span>
 
-                </AppLink>
-                <AppLink
-                    className={'mainPage-link'}
-                    to={RoutePath.dev_estimates}
-                >
-                    <span className={'cls.link'}>Разработка сметы</span>
-                </AppLink>
-                <AppLink
-                    className={'mainPage-link'}
-                    to={RoutePath.planing}
-                >
-                    <span className={'cls.link'}>Планирование</span>
-                </AppLink>
-            </div>
+                        </AppLink>
+                        <AppLink
+                            className={'mainPage-link'}
+                            to={RoutePath.dev_estimates}
+                        >
+                            <span className={'cls.link'}>Разработка сметы</span>
+                        </AppLink>
+                        <AppLink
+                            className={'mainPage-link'}
+                            to={RoutePath.planing}
+                        >
+                            <span className={'cls.link'}>Планирование</span>
+                        </AppLink>
+                    </div>
  
+                </>
+                : <div className="mainPage-title">Hello, select SignIn or SignUp</div>}
+            
         </div>
 
     )

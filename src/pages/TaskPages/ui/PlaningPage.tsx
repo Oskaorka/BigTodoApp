@@ -61,7 +61,6 @@ const PlaningPage = () => {
     
     return (
         <>
-            lololo
             <div 
                 key={'e.number'} 
                 className='task-wrapper' 

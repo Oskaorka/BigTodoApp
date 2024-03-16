@@ -12,6 +12,9 @@ const Comments = ({currentId}: any): any => {
     const dispatch = useAppDispatch();
     const [currentComment, setCuerrentComment] = useState([]);
     const comments = Object.values(currentComment);
+    console.log(comments);
+    console.log(comments);
+    
     // const getDFormBlock = document.querySelector('.form-block');
     // const dataId = getDFormBlock?.getAttribute('data-id');
     // console.log(dataId);
