@@ -1,3 +1,4 @@
+import { useAuth } from 'app/provider/router/service/useAuth';
 import { loadPlaningColumnStart, loadPlaningStart } from 'app/redux/action/actionCreator';
 import { useAppDispatch } from 'app/redux/store';
 import { ConstructionPage } from 'pages/ConstructionPage';
@@ -59,8 +60,27 @@ const PlaningPage = () => {
     // const params = useParams();
     // console.log(params);
     
+    const {loginOut} = useAuth();
+    // const isEmpty = (x:any) => !Object.keys(x || {}).length;
+    
+    const handleloginOut = () => {
+        loginOut();
+    }
+
+
+
     return (
         <>
+            <div className="mainPage-wrapper__logOut">
+                {/* { !currentUser || isEmpty(currentUser)?  */}
+                {/* <> */}
+                {/* <FormLogin/> */}
+                {/* <FormRegistration/> */}
+                {/* </> */}
+                {/* : <Button onClick={handleloginOut} className="btn btn-logIn" children="LogOut"/>}  */}
+                {/* // <Button onClick={handleloginOut} className="btn btn-logIn" children="LogOut"/> */}
+                <Button onClick={handleloginOut} className="btn btn-logOut" children="LogOut"/> 
+            </div>
             <div 
                 key={'e.number'} 
                 className='task-wrapper' 

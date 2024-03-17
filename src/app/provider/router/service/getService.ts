@@ -1,6 +1,6 @@
 import httpService from './http.sevice';
 import localStorageService from './localStorage.service';
-// not used file
+
 export const getService = {
     get: async () => {
         const {data}  = await httpService.get('planing');
@@ -55,20 +55,8 @@ export const getService = {
         return data;
     },
     
-    
-    
     logInUsers: async () => {
-        
-        
         const  { data }  = await httpService.get(`users/${localStorageService.getUserId()}`);
-        // const data = await axios.get(
-        // eslint-disable-next-line max-len
-        // `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${payload._id}/${payload}.json`);
-        // `https://spa-todoapi-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorageService.getUserId()}.json`);
-                
-        
-        // eslint-disable-next-line no-undef
-        // console.log(data);
         return data
     }
 };

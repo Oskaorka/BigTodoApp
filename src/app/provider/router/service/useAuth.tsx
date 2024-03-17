@@ -1,9 +1,6 @@
 import axios from 'axios';
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-// import { createUsers, logInUsers } from './loadList';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { createUsers} from './loadList';
-// import { createUsers, logInUsers } from './loadList';
-import { useNavigate } from 'react-router-dom';
 import localStorageService, { setTokens } from './localStorage.service';
 import { getService } from './getService';
 
@@ -23,8 +20,6 @@ export interface IDefaultValue {
     userName?: string,
   }
 
-// const key = '';
-// const url = ,
 export const httpAuth = axios.create({
     baseURL: 'https://identitytoolkit.googleapis.com/v1/',
     params: {
@@ -45,21 +40,9 @@ export const useAuth = () => {
 // for the value children, correct the typefrom any 
 const AuthProvider = ({children}:any) => {
     const [currentUser, setCurrentUser] =  useState({});
-    const [isOpenModal, setIsOpenModal] = useState(false);
     const [error, setError] = useState(null);
-    
 
-    // const [data, setData] = useState({
-    //     email:'',
-    //     password:'',
-    //     userName: ''
-    // // })
-    // console.log(currentUser);
-
-    // async function signUp ({email, password, ...rest}:FormSignUp) {
     async function signUp ({email, password, ...rest}:FormSignUp) {
-        // const key = 'AIzaSyBo7_E3-xSwK9ATdoiXE4o9sfn3HSw7iUU';
-        // const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`;
         try {
             const { data } = await httpAuth.post(
                 'accounts:signUp',
@@ -76,16 +59,12 @@ const AuthProvider = ({children}:any) => {
             console.log(error);
             
         }
-        
-        // return data
-        
     }
 
     async function signIn ({email, password}:FormSignUp) {
         // const key = 'AIzaSyBo7_E3-xSwK9ATdoiXE4o9sfn3HSw7iUU';
         // const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`;
         try {
-            // const { data } = await axios.post(url, {
             const { data } = await httpAuth.post(
                 'accounts:signInWithPassword',
                 {
@@ -93,32 +72,19 @@ const AuthProvider = ({children}:any) => {
                     password,
                     returnSecureToken:true
                 })
-            // console.log(data);
-            
             setTokens(data);
             getUserData()
-            // await logInUsers({_id: data.localId, email})
-            // console.log(data);
-            // console.log(getUserData());
         } catch (error) {
             console.log(error);
-            
         }
-        
-        // return data
-        
     }
 
 
     async function createUser (content: unknown) {
         try {
-            
             const { data } = await createUsers(content)
-            // console.log(content);
-            // console.log(data);
             setCurrentUser(data);
         } catch (error) {
-            
             console.log(error);
         }
         
@@ -127,41 +93,9 @@ const AuthProvider = ({children}:any) => {
     function loginOut() {
         localStorageService.removeAuthData();
         setCurrentUser({});
-        // console.log('test');
-        
     } 
 
-    // const onToggleModal = useCallback(() => {
-    //     setIsOpenModal((prev) => !prev);
-    //     setData({
-    //         email: '',
-    //         password: '',
-    //         userName: ''
-    //     })
-    // }, []);
-
-    // const handleChangeForText = ({ target }:any) => {
-    //     setData((prevstate:any) => ({
-    //         ...prevstate,
-    //         [target.name]: target.value
-    //     }));
-
-    // };
-
-    // const handleSubmit = (event: React.FormEvent<HTMLFormElement & FormSignUp>) => {
-    //     event.preventDefault();
-    //     try {
-    //         onToggleModal();
-    //         signUp(data);
-    //         console.log(data);
-            
-    //     } catch (error) {
-    //         console.log(error);
-            
-    //     }
-        
-    // }
-
+    // eslint-disable-next-line no-unused-vars
     function errorCatcher(error:any) {
         const { message } = error.response.data;
         setError(message);
@@ -177,15 +111,9 @@ const AuthProvider = ({children}:any) => {
     async function getUserData() {
         try {
             const {content} = await getService.logInUsers();
-            // const {data} = await logInUsers();
-            // console.log(content);
-            // console.log(localStorageService.getAccessToken());
-            
             setCurrentUser(content);
-            
         } catch (error) {
             console.log(error);
-            
         }
     }
 

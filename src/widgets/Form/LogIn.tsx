@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Button from 'shared/ui/Button/Button';
 import FormLogin from './FormLogin';
 import FormRegistration from './FormRegistration';
 
@@ -9,7 +8,7 @@ const LogIn = () => {
     const [formType, setFormType] = useState(
         type === 'register' ? type : 'login'
     );
-    const toggleFormType = (params:any) => {
+    const toggleFormType = () => {
         setFormType((prevState) =>
             prevState === 'register' ? 'login' : 'register'
         );
@@ -21,29 +20,21 @@ const LogIn = () => {
                     {formType === 'register' ? (
                         <>
                             <h3 className="mb-4">Register</h3>
-                            {/* <RegisterForm /> */}
                             <p>
-                                Already have account?{' '}
+                                Already have account?
                                 <a role="button" onClick={toggleFormType}>
-                                    {' '}
                                     Sign In
                                 </a>
                             </p>
                             <FormLogin/>
-                            {/* <Button 
-                                onClick={toggleFormType}
-                                className="btn btn-logIn"
-                                children="signIn"/> */}
                         </>
                     ) : (
                         <>
                             <h3 className="mb-4">Login</h3>
-                            {/* <LoginForm /> */}
                             <FormRegistration/>
                             <p>
-                                Dont have account?{' '}
+                                Dont have account?
                                 <a role="button" onClick={toggleFormType}>
-                                    {' '}
                                     Sign Up
                                 </a>
                             </p>

@@ -36,12 +36,18 @@
         text-align: center;
         margin: 100px 0;
     }
-    &-wrapper__logIn {
+    &-wrapper__logIn, &-wrapper__logOut {
         display: flex;
-        justify-content: flex-end;
         padding-top: 20px;
-        padding-right: 20px;
-        // width: 200px;
+        width: 200px;
+        margin: 0 auto;
+    }
+    &-wrapper__logIn {
+        justify-content: space-between;
+
+    }
+    &-wrapper__logOut {
+        justify-content: center;
     }
 }
 .Modal__wrapper {
@@ -56,8 +62,6 @@
     &-form {
         display: inherit;
         flex-direction: column;
-        // display: flex;
-        // justify-content: center;
         align-items:center;
         label {
             padding: 10px;
@@ -77,9 +81,3 @@
         }
     }
 }
-// .Modal {
-
-//     .content {
-//         width: 40px;
-//     }
-// }

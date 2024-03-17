@@ -3,30 +3,30 @@ import { useAuth } from 'app/provider/router/service/useAuth';
 import { 
     createCommentActionStart,
     createCommentReplyActionStart,
-    loadCommentsStart
+    // loadCommentsStart
 } from 'app/redux/action/actionCreator';
-import { IComments } from 'app/redux/reducers/data';
+// import { IComments } from 'app/redux/reducers/data';
 import { useAppDispatch, useAppSelector } from 'app/redux/store';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const CommentForm = ({
     // handleSubmit,
     submitLabel,
     hasCancelButton = false,
     handleCancel,
-    initialText = '',
+    // initialText = '',
     currentId,
     classNameForm,
     reply
 }: any) => {
     const dispatch = useAppDispatch();
-    const [text, setText] = useState(initialText);
+    // const [text, setText] = useState(initialText);
     const {currentUser}:any = useAuth();
     console.log(currentUser.userName);
     
     // const [currentIdBlock, setCurrentId] = useState(currentId);
     // const [text, setText] = useState(initialText);
-    const isTextareaDisabled = text.length === 0;
+    // const isTextareaDisabled = text.length === 0;
     const [comment, setComment] = useState({
         // id: (~~(Math.random()*1e8)).toString(16),
         id: currentId,

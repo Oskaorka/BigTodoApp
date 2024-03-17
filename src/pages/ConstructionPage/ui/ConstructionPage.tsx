@@ -6,7 +6,6 @@ import DraggableElement from './Item/DraggableElement';
 import { ItemType } from '../type';
 import { useAppDispatch, useAppSelector} from 'app/redux/store';
 import { deleteTaskStart, updateTaskStart } from 'app/redux/action/actionCreator';
-import { useNavigate } from 'react-router-dom';
 
 export const ConstructionPage = () => {
     const { planingColumn } = useAppSelector(state => state.dataList || {});
@@ -15,7 +14,7 @@ export const ConstructionPage = () => {
     const [elements, setElements] = useState({});
     const lists = ['Queue', 'Development', 'Done'];
 
-    const isEmpty = (x:any) => !Object.keys(x || {}).length;
+    const isEmpty = (x:string) => !Object.keys(x || {}).length;
   
     const removeFromList = (list: ItemType[], index: number) => {
         const result = Array.from(list);
@@ -84,7 +83,7 @@ export const ConstructionPage = () => {
             setCurrentId(currentId);
             setTask(removedElement);
             setTask((prevState): any=>({...prevState, current_state}))
-            // console.log(listCopy);;'
+            // console.log(listCopy);
         },
         [elements, addToList]
     );
@@ -95,16 +94,7 @@ export const ConstructionPage = () => {
         }
     },[newTask]);
     // },[newTask, currentId, dispatch, elements]);
-    // },[newTask, currentId, dispatch, elements]);
-    // },[newTask, currentId, dispatch, elements]);
-    // },[]);
     // был бесконечный рендер, с такими изменениями он пересатал крутить бесконечно (пока оставляю необходимо посмотреть и проверить на работоспособность)
-    
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('/');
-    }
 
     const handleDeletTask = (currentTarget: string) => {
         dispatch(deleteTaskStart(currentTarget));
@@ -115,10 +105,6 @@ export const ConstructionPage = () => {
             setElements(planingColumn);
         }
     },[planingColumn]);
-    // console.log(planingColumn);
-    
-
-    ///// возможно здесь есть ошибка бесконечного рендера компонента
 
     return (
         !isEmpty(planingColumn)?
