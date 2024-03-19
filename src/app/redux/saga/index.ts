@@ -27,10 +27,10 @@ import {
     loadPlaningSuccess,
     loadPlaningError,
     createTaskListActionSucces,
-    createTaskActionStart,
+    // createTaskActionStart,
     loadPlaningStart,
-    deleteTaskSuccess,
-    deleteTaskError,
+    // deleteTaskSuccess,
+    // deleteTaskError,
     loadPlaningColumnSuccess,
     loadPlaningColumnError,
     loadPlaningColumnStart,
@@ -40,7 +40,7 @@ import {
     createCommentReplyActionSucces,
     loadCommentsStart,
 } from '../action/actionCreator';
-import { IComments } from '../reducers/data';
+// import { IComments } from '../reducers/data';
 import { getService } from 'app/provider/router/service/getService';
 
 export enum ICurrentStateTodo {

@@ -1,0 +1,8 @@
+.file-loader {
+    width: 200px;
+    color: red;
+    border-color: aqua;
+    &:hover{
+        background-color: aqua;
+    }
+}

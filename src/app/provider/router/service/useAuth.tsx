@@ -95,7 +95,8 @@ const AuthProvider = ({children}:any) => {
         setCurrentUser({});
     } 
 
-    // eslint-disable-next-line no-unused-vars
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function errorCatcher(error:any) {
         const { message } = error.response.data;
         setError(message);

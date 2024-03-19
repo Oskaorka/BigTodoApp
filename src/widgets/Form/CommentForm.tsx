@@ -21,7 +21,7 @@ const CommentForm = ({
 }: any) => {
     const dispatch = useAppDispatch();
     // const [text, setText] = useState(initialText);
-    const {currentUser}:any = useAuth();
+    const {currentUser} = useAuth();
     console.log(currentUser.userName);
     
     // const [currentIdBlock, setCurrentId] = useState(currentId);

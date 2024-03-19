@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { Droppable, DroppableProps } from 'react-beautiful-dnd';
 import ListItem from './Item';
 
-type ComponentType = {
-  prefix: string;
-  elements: Array<string>;
-};
+// type ComponentType = {
+//   prefix: string;
+//   elements: Array<string>;
+// };
 
 export const StrictModeDroppable = ({ children, ...props }: DroppableProps) => {
     const [enabled, setEnabled] = useState(false);

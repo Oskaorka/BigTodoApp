@@ -60,7 +60,7 @@ const PlaningPage = () => {
     // const params = useParams();
     // console.log(params);
     
-    const {loginOut} = useAuth();
+    const { loginOut } = useAuth();
     // const isEmpty = (x:any) => !Object.keys(x || {}).length;
     
     const handleloginOut = () => {

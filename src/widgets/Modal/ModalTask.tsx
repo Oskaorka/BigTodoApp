@@ -20,7 +20,7 @@ export const Modal = (props: ModalProps) => {
         onClose,
     } = props;
 
-    const [isClosing, setIsClosing] = useState(false);
+    const [ , setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
    
     const closeHandler = useCallback(() => {

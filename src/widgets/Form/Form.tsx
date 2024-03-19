@@ -8,13 +8,14 @@
 // LOAD_PLANING_LIST,
 // LOAD_PLANING_SUCCESS
 // } from 'app/redux/constants';
-import { useAppDispatch, useAppSelector } from 'app/redux/store';
+import { useAppDispatch } from 'app/redux/store';
 // import { ITodos } from 'pages/TaskPages/ui/PlaningPage';
-import { FC, FormEvent, useEffect, useState } from 'react';
+import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import Button from 'shared/ui/Button/Button';
 // import Comment from 'widgets/Comment/Comment';
 import Comments from 'widgets/Comment/Comments';
+import FileLoader from 'widgets/Fileloader/FileLoader';
 
 // type FormFields extends HTMLFormElement= {
 type FormFields = {
@@ -31,7 +32,7 @@ type FormFields = {
 
 
 // const Form: FC<FormFields> = (props)  => {
-const Form = ({addDispatchForm, currentId, onClose, props, dataId}: any)  => {
+const Form = ({addDispatchForm, currentId, onClose, props}: any)  => {
 // const Form: FC<formItodos extends <HTMLFormElement>> = (props)  => {
     const {
         title,
@@ -152,7 +153,7 @@ const Form = ({addDispatchForm, currentId, onClose, props, dataId}: any)  => {
                     onChange={handleChangeForText}
 
                 />
-            
+                <FileLoader/>
                 <Button children='update' className='btn'/>
             </form>
             {/* <span>text message</span> */}

@@ -4,12 +4,12 @@ import { IComments } from 'app/redux/reducers/data';
 import { useAppDispatch } from 'app/redux/store';
 import { getReplies } from 'app/utils/getReplies';
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CommentForm from 'widgets/Form/CommentForm';
 
 
 // const blockId = attribute = event.target.attributes.getNamedItem('data-id').value;
-const Comment = ({comment, replies, commentList, currentId, tst}: any): any => {
+const Comment = ({comment, replies, commentList, currentId}: any): any => {
     const dispatch = useAppDispatch();
     // console.log(currentId);
     // console.log(blockId);
@@ -99,7 +99,8 @@ const Comment = ({comment, replies, commentList, currentId, tst}: any): any => {
                     <CommentForm
                         submitLabel="Reply"
                         classNameForm={'comment-form_reply'}
-                        handleSubmit={(text:string) => addComment('text')}
+                        // handleSubmit={(text):any => addComment('text')}
+                        handleSubmit={addComment('text')}
                         reply={comment}
                         currentId={currentId}
                     // handleSubmit={(text:string) => addComment(text, replyId)}

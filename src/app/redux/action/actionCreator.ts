@@ -38,7 +38,7 @@ import {
 // DELETE_SUCCESS,
 // DELETE_TASK_REQUEST,
 // DELETE_TASK_SUCCESS,
-import { IDataPaylaod, ITodos } from '../reducers/data';
+import { IDataPaylaod } from '../reducers/data';
 
 export const loadPlaningStart = () => ({
     type: LOAD_PLANING_LIST,
